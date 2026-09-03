@@ -72,6 +72,10 @@ async def crawl(start_url, folder, start_chapter=1, max_steps=10):
     await asyncio.gather(*tasks)
 
 
+async def run_all(coroutines):
+    await asyncio.gather(*coroutines)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("url", help="URL to download images from")
@@ -91,7 +95,6 @@ if __name__ == "__main__":
     HEADERS = {}
     HEADERS.update(get_referer(args.url))
 
-    loop = asyncio.get_event_loop()
     tasks = []
     if r"{chapter}" not in args.url:
         tasks.append(
@@ -102,6 +105,8 @@ if __name__ == "__main__":
     else:
         for i in range(int(args.start_chapter), int(args.max_chapters) + 1):
             tasks.append(
-                download_images(args.url.format(chapter=i), args.folder / f"ch{i}")
+                download_images(
+                    args.url.format(chapter=i), Path(args.folder) / f"ch{i}"
+                )
             )
-    loop.run_until_complete(asyncio.wait(tasks))
+    asyncio.run(run_all(tasks))
