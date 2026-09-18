@@ -1,1 +1,5 @@
 Manga
+/result
+/result-*
+__pycache__/
+.venv/
