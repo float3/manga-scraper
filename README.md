@@ -4,7 +4,7 @@ this is supposed to produce [tachiyomi](https://tachiyomi.org) compatible manga 
 
 # please report manga sites that don't work!
 
-- vagabond-chapters.com doesn't work anymore, it looks like they added some anti bot measures, potentially because I used them for testing
+- vagabond-chapters.com doesn't work anymore, it looks like they added some anti bot measures, potentially because i used them for testing
 
 # requirements
 
